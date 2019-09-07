@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /Data Science/
-title: "Data Science Projects by Tags"
+title: "Data Science Projects"
 author_profile: true
 header:
   image: "/images/mywork.jpg"
