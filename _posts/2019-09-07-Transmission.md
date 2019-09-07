@@ -87,7 +87,7 @@ mtcars %>%
   ggplot(aes(x = am, y = mpg, fill = am)) + geom_boxplot()
 ```
 
-![](Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
+![](./Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
 
 A t-test is performed to assess whether this difference is statistically significant.
 
