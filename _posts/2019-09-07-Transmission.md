@@ -1,7 +1,7 @@
 ---
 title: "Are manual or automatic cars more fuel efficient?"
 date: 2019-09-07
-tags: [Exploratory Analysis, linear regression, data visualisation]
+tags: [Exploratory Analysis, Linear regression, Data Visualisation]
 header:
   image: "/images/mpg.jpg"
 excerpt: "Exploratory Analysis, Linear Regression, Data Visualisation"
