@@ -111,8 +111,7 @@ With a p-value of 0.0006868, we can reject the null hypothesis (at the 1% signif
 
 Whilst we have seen that the mpg for manual cars is higher, we need to investigate whether this is due to other confounding factors. We make some further exploratory plots.
 
-![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory%20plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory%20plots-2.png)
-
+![](Course_Project_files/figure-markdown_github/Exploratory%20plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory%20plots-2.png)
 
 From these exploratory graphs, the following initial observations are made:
 \* Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
