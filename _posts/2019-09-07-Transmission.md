@@ -36,13 +36,6 @@ require(MASS, warn.conflicts = F, quietly = T)
 require(lmtest, warn.conflicts = F, quietly = T)
 ```
 
-    ##
-    ## Attaching package: 'zoo'
-
-    ## The following objects are masked from 'package:base':
-    ##
-    ##     as.Date, as.Date.numeric
-
 Next we load the mtcars dataset and perform some initial data manipulation. In particular we convert the engine shape (vs) and transmission type (am) to factors.
 
 ``` r
@@ -75,8 +68,7 @@ str(mtcars)
     ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
     ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 
-The dataset contains the following variables
-1. mpg: Miles/(US) gallon
+The dataset contains 32 observations of the following 11 variables: 1. mpg: Miles/(US) gallon
 2. cyl: Number of cylinders
 3. disp: Displacement (cu.in.)
 4. hp: Gross horsepower
@@ -89,6 +81,11 @@ The dataset contains the following variables
 11. carb: Number of carburetors
 
 A plot of mpg by transmission type reveals that mpg is (on average) higher for manual cars.
+
+``` r
+mtcars %>%
+  ggplot(aes(x = am, y = mpg, fill = am)) + geom_boxplot()
+```
 
 ![](Course_Project_files/figure-markdown_github/mpg%20by%20am-1.png)
 
@@ -114,7 +111,8 @@ With a p-value of 0.0006868, we can reject the null hypothesis (at the 1% signif
 
 Whilst we have seen that the mpg for manual cars is higher, we need to investigate whether this is due to other confounding factors. We make some further exploratory plots.
 
-![](Course_Project_files/figure-markdown_github/Exploratory%20plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory%20plots-2.png)
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory%20plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory%20plots-2.png)
+
 
 From these exploratory graphs, the following initial observations are made:
 \* Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
