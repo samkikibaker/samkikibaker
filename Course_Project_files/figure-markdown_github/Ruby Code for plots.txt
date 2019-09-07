@@ -1,0 +1,7 @@
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-1.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-2.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/residuals-1.png)

@@ -82,12 +82,7 @@ The dataset contains 32 observations of the following 11 variables: 1. mpg: Mile
 
 A plot of mpg by transmission type reveals that mpg is (on average) higher for manual cars.
 
-``` r
-mtcars %>%
-  ggplot(aes(x = am, y = mpg, fill = am)) + geom_boxplot()
-```
-
-![](./Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
 
 A t-test is performed to assess whether this difference is statistically significant.
 
@@ -111,17 +106,19 @@ With a p-value of 0.0006868, we can reject the null hypothesis (at the 1% signif
 
 Whilst we have seen that the mpg for manual cars is higher, we need to investigate whether this is due to other confounding factors. We make some further exploratory plots.
 
-![](Course_Project_files/figure-markdown_github/Exploratory_plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory_plots-2.png)
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-1.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-2.png)
 
 From these exploratory graphs, the following initial observations are made:
-\* Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
-\* Quarter mile time (qsec) and mpg have a positive trend. There is no association between qsec and transmission, perhaps because whilst automatic cars tend to be heavier, they are also more powerful, both of which will affect their quarter mile time.
-\* Rear axel ratio has a positive trend with mpg. Also automatic cars tend to have a lower ratio.
-\* There is a strong negative trend between displacement and mpg. Automatic cars tend to have higher displacement.
-\* Displacement is a measure of the volume of the cylinders within an engine, hence unsurprisingly the result with displacement is mirrored with cylinders. That is more cylinders (hence higher displacement) corresponds to fewer mpg.
-\* V-shaped engines tend to have lower mpg than straight engines. There does not seem to be an association between transmission and engine shape.
-\* Automatic cars tend to have fewer gears. There is some evidence that having four gear gives the best mpg and three gears gives the worst mpg.
-\* There is a negative trend between number of carburetors and mpg. There is a some evidence that automatic cars have fewer carburetors.
+* Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
+* Quarter mile time (qsec) and mpg have a positive trend. There is no association between qsec and transmission, perhaps because whilst automatic cars tend to be heavier, they are also more powerful, both of which will affect their quarter mile time.
+* Rear axel ratio has a positive trend with mpg. Also automatic cars tend to have a lower ratio.
+* There is a strong negative trend between displacement and mpg. Automatic cars tend to have higher displacement.
+* Displacement is a measure of the volume of the cylinders within an engine, hence unsurprisingly the result with displacement is mirrored with cylinders. That is more cylinders (hence higher displacement) corresponds to fewer mpg.
+* V-shaped engines tend to have lower mpg than straight engines. There does not seem to be an association between transmission and engine shape.
+* Automatic cars tend to have fewer gears. There is some evidence that having four gear gives the best mpg and three gears gives the worst mpg.
+* There is a negative trend between number of carburetors and mpg. There is a some evidence that automatic cars have fewer carburetors.
 
 Following this initial exploratory analysis we expect that horsepower, weight, and displacement may be relevant as they exhibited strong trend with mpg and strong association with transmission type.
 
@@ -163,7 +160,7 @@ Model Residuals and Diagnostics
 
 Before we can interpret the model, we must examine the residuals to ensure our assumptions are satisfied. Here we have assumed that the residuals are normally distributed with mean zero and constant variance.
 
-![](Course_Project_files/figure-markdown_github/residuals-1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/residuals-1.png)
 
 The first plot shows the residuals vs fitted values. The points seem fairly evenly spread above and below the line at zero indicating their mean is about zero. Indeed the mean of the residuals is 5.204170410^{-17}.
 
