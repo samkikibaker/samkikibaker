@@ -87,7 +87,7 @@ mtcars %>%
   ggplot(aes(x = am, y = mpg, fill = am)) + geom_boxplot()
 ```
 
-![](Course_Project_files/figure-markdown_github/mpg%20by%20am-1.png)
+![](Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
 
 A t-test is performed to assess whether this difference is statistically significant.
 
@@ -111,7 +111,7 @@ With a p-value of 0.0006868, we can reject the null hypothesis (at the 1% signif
 
 Whilst we have seen that the mpg for manual cars is higher, we need to investigate whether this is due to other confounding factors. We make some further exploratory plots.
 
-![alt](Course_Project_files/figure-markdown_github/mpg by am-1.png)
+![](Course_Project_files/figure-markdown_github/Exploratory_plots-1.png)![](Course_Project_files/figure-markdown_github/Exploratory_plots-2.png)
 
 From these exploratory graphs, the following initial observations are made:
 \* Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
