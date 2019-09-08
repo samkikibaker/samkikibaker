@@ -3,7 +3,7 @@ title: "Are manual or automatic cars more fuel efficient?"
 date: 2019-09-07
 tags: [Exploratory Analysis, Linear regression, Data Visualisation]
 header:
-  image: "/images/mpg.jpg"
+  image: "/images/Transmission Images/mpg.jpg"
 excerpt: "Exploratory Analysis, Linear Regression, Data Visualisation"
 ---
 
@@ -17,10 +17,11 @@ Aims and data
 
 This analysis will focus on how the transmission of a car affects its miles per gallon. In particular, it will aim to do the following:
 
-1.  Answer whether an automatic or manual transmission is better for miles per gallon
-2.  Quantify the miles per gallon difference between automatic and manual transmissions
+*1. Answer whether an automatic or manual transmission is better for miles per gallon.*
 
-The data comes from the Motor Trend Car Road Tests (mtcars) dataset in R. "The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+*2. Quantify the miles per gallon difference between automatic and manual transmissions.*
+
+The data comes from the Motor Trend Car Road Tests (mtcars) dataset in R. The data was extracted from the Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
 
 Data Wrangling
 --------------
@@ -68,21 +69,23 @@ str(mtcars)
     ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
     ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 
-The dataset contains 32 observations of the following 11 variables: 1. mpg: Miles/(US) gallon
-2. cyl: Number of cylinders
-3. disp: Displacement (cu.in.)
-4. hp: Gross horsepower
-5. drat: Rear axle ratio
-6. wt: Weight (1000 lbs)
-7. qsec: 1/4 mile time
-8. vs: Engine shape (V = V-shaped or S = straight)
-9. am: Transmission (A = automatic, M = manual)
+The dataset contains 32 observations of the following 11 variables:
+
+1.  mpg: Miles/(US) gallon
+2.  cyl: Number of cylinders
+3.  disp: Displacement (cu.in.)
+4.  hp: Gross horsepower
+5.  drat: Rear axle ratio
+6.  wt: Weight (1000 lbs)
+7.  qsec: 1/4 mile time
+8.  vs: Engine shape (V = V-shaped or S = straight)
+9.  am: Transmission (A = automatic, M = manual)
 10. gear: Number of forward gears
 11. carb: Number of carburetors
 
-A plot of mpg by transmission type reveals that mpg is (on average) higher for manual cars.
+We examine a plot of mpg by transmission type.
 
-![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/mpg_by_am-1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/mpg_by_am-1.png)
 
 A t-test is performed to assess whether this difference is statistically significant.
 
@@ -102,25 +105,25 @@ t.test(mtcars$mpg[mtcars$am == "A"], mtcars$mpg[mtcars$am == "M"], alternative =
     ## mean of x mean of y
     ##  17.14737  24.39231
 
-With a p-value of 0.0006868, we can reject the null hypothesis (at the 1% significance level) that the mean mpg across the two transmission types is the same.
+With a p-value of 0.0006868, we reject the null hypothesis (at the 1% significance level) that the mean mpg across the two transmission types is the same.
 
 Whilst we have seen that the mpg for manual cars is higher, we need to investigate whether this is due to other confounding factors. We make some further exploratory plots.
 
-![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/Exploratory_plots-1.png)
 
-![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/Exploratory_plots-2.png)
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/Exploratory_plots-2.png)
 
 From these exploratory graphs, the following initial observations are made:
 * Weight and horsepower have a strong negative trend with mpg. Also automatic cars tend to be heavier and more powerful.
 * Quarter mile time (qsec) and mpg have a positive trend. There is no association between qsec and transmission, perhaps because whilst automatic cars tend to be heavier, they are also more powerful, both of which will affect their quarter mile time.
 * Rear axel ratio has a positive trend with mpg. Also automatic cars tend to have a lower ratio.
 * There is a strong negative trend between displacement and mpg. Automatic cars tend to have higher displacement.
-* Displacement is a measure of the volume of the cylinders within an engine, hence unsurprisingly the result with displacement is mirrored with cylinders. That is more cylinders (hence higher displacement) corresponds to fewer mpg.
+* Displacement is a measure of the volume of the cylinders within an engine, hence unsurprisingly the result with displacement is mirrored with cylinders. That is, more cylinders (hence higher displacement) corresponds to fewer mpg.
 * V-shaped engines tend to have lower mpg than straight engines. There does not seem to be an association between transmission and engine shape.
-* Automatic cars tend to have fewer gears. There is some evidence that having four gear gives the best mpg and three gears gives the worst mpg.
+* Automatic cars tend to have fewer gears. There is some evidence that having four gears gives the best mpg and three gears gives the worst mpg.
 * There is a negative trend between number of carburetors and mpg. There is a some evidence that automatic cars have fewer carburetors.
 
-Following this initial exploratory analysis we expect that horsepower, weight, and displacement may be relevant as they exhibited strong trend with mpg and strong association with transmission type.
+Following this initial exploratory analysis, we expect that horsepower, weight, and displacement may be relevant as they exhibited strong trend with mpg and strong association with transmission type.
 
 Model Selection
 ---------------
@@ -153,18 +156,18 @@ summary(stepAIC(fit1, trace = 0, direction = "both"))
     ## Multiple R-squared:  0.8497, Adjusted R-squared:  0.8336
     ## F-statistic: 52.75 on 3 and 28 DF,  p-value: 1.21e-11
 
-The model with the lowest AIC contains the weight, horsepower and transmission type as the predictors.
+The model with the lowest AIC contains the weight, quarter-mile time and transmission type as the predictors.
 
 Model Residuals and Diagnostics
 -------------------------------
 
 Before we can interpret the model, we must examine the residuals to ensure our assumptions are satisfied. Here we have assumed that the residuals are normally distributed with mean zero and constant variance.
 
-![alt]({{ site.url }}{{ site.baseurl }}/Course_Project_files/figure-markdown_github/residuals-1.png)
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/residuals-1.png)
 
-The first plot shows the residuals vs fitted values. The points seem fairly evenly spread above and below the line at zero indicating their mean is about zero. Indeed the mean of the residuals is 5.204170410^{-17}.
+The first plot shows the residuals vs fitted values. The points seem fairly evenly spread above and below the line at zero indicating their mean is about zero.
 
-However there appears to be some heteroskedasticity; the variance of the residuals appears to increase to larger fitted values. We perform a Breusch-Pagan test to assess this.
+There appears to be some heteroskedasticity; the variance of the residuals appears to increase with larger fitted values. We perform a Breusch-Pagan test to assess this.
 
     ##
     ##  studentized Breusch-Pagan test
@@ -174,15 +177,15 @@ However there appears to be some heteroskedasticity; the variance of the residua
 
 The p-value of 0.1029 indicates that we do not reject the null hypothesis that the variance of the residuals is constant. So our assumption of constant variance in the residuals is met.
 
-The second plot is the normal Q-Q plot. Since the points lie roughly on the diagonal line we can be confident the residuals are indeed normally disributed.
+The second plot is the normal Q-Q plot. Since the points lie roughly on the diagonal line we can be confident the residuals are indeed normally distributed.
 
 The third plot shows the fitted values vs the square root of the standardised residuals. This plot is more concerning as the strong upwards trend is evidence of heteroskedasticity; larger fitted values have larger residuals. However since we have already performed a Breusch-Pagan test for heteroskedasticity (and failed to detect it), we will move on.
 
-Finally in the residuals vs leverage plot the points are spaced fairly evenly above and below the line at zero. This indicates that points with high leverage (i.e. far from the mean of the fitted values) do not have larger or smaller standardised residuals. This is more evidence of homoskedasticity.
+Finally in the residuals vs leverage plot the points are spaced fairly evenly above and below the line at zero. This indicates that points with high leverage (i.e. far from the mean of the fitted values) do not have larger or smaller standardised residuals. This is more evidence of homoskedasticity (constant variance in the residuals).
 
-Moreover there are no points outside of Cook's distance indicating that there are no influential points. That is there are no outlying points which are dramatically affecting the fit.
+Moreover there are no points outside of Cook's distance indicating that there are no influential points. That is, there are no outlying points which are dramatically affecting the fit.
 
-Overall we can confident the model meet the assumptions regarding the residuals and that there are no outlying points that need to be addressed. Thus we may continue on to model interpretation.
+Overall we can confident that the model meets the assumptions regarding the residuals and that there are no outlying points that need to be addressed. Thus we may continue on to model interpretation.
 
 Model Interpretation
 ====================
@@ -217,10 +220,12 @@ The coefficient of transmission type (amM) is 2.9358 with a corresponding p-valu
 Conclusion
 ==========
 
-To conclude, we complete the two assign tasks.
+To conclude, we complete the two assigned tasks.
 
-1.  Answer whether an automatic or manual transmission is better for miles per gallon
-    A manual transmission is better for miles per gallon.
+*1. Answer whether an automatic or manual transmission is better for miles per gallon.*
 
-2.  Quantify the miles per gallon difference between automatic and manual transmissions
-    With 95% confidence, we can say that the miles per gallon of a manual car is between 0.04570236 and 5.82589764 mpg better than the mpg of an automatic car. A manual car is on average 2.9358 mpg better than an automatic car.
+A manual transmission is better for miles per gallon.
+
+*2. Quantify the miles per gallon difference between automatic and manual transmissions.*
+
+With 95% confidence, we can say that the miles per gallon of a manual car is between 0.04570236 and 5.82589764 mpg better than the mpg of an automatic car. A manual car is on average 2.9358 mpg better than an automatic car.

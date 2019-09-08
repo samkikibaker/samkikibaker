@@ -1,0 +1,7 @@
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/mpg_by_am-1.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/Exploratory_plots-1.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/Exploratory_plots-2.png)
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/Transmission Images/residuals-1.png)
