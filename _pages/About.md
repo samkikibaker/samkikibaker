@@ -9,4 +9,4 @@ Hi, I’m Sam, a recent maths graduate and keen data scientist. As the work in m
 
 I’m actively looking for a graduate role in data science that will allow me to utilise and expand my knowledge of machine learning techniques. Please do not hesitate to contact me with any open positions.
 
-For more information regarding my skills and experience please see my [CV]({{ site.url }}/assets/SAM KIKI BAKER CV.pdf).
+For more information regarding my skills and experience please see my [CV]({{ site.url }}/assets/SAM KIKI BAKER CV.pdf) .
